@@ -320,7 +320,7 @@ impl ConfigurableBlockchain for RpcBlockchain {
         let wallet_url = format!("{}/wallet/{}", config.url, &wallet_name);
         debug!("connecting to {} auth:{:?}", wallet_url, config.auth);
 
-        let client = Client::new(wallet_url, config.auth.clone())?;
+        let client = Client::new(&wallet_url, config.auth.clone())?;
         let loaded_wallets = client.list_wallets()?;
         if loaded_wallets.contains(&wallet_name) {
             debug!("wallet already loaded {:?}", wallet_name);
